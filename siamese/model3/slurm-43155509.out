@@ -1,0 +1,251 @@
+========== START ==========
+Start time: Fri Jan 15 22:45:14 EST 2021
+
+The following have been reloaded with a version change:
+  1) python/3.7.4 => python/3.8.2
+
+2021-01-15 22:45:23.230277: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-15 22:46:06.601766: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2021-01-15 22:46:06.644065: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:83:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+2021-01-15 22:46:06.644185: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-15 22:46:06.663329: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2021-01-15 22:46:06.671460: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2021-01-15 22:46:06.673644: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2021-01-15 22:46:06.686207: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2021-01-15 22:46:06.689702: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2021-01-15 22:46:06.712590: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2021-01-15 22:46:06.715689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2021-01-15 22:46:06.718640: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-01-15 22:46:06.800514: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2095034999 Hz
+2021-01-15 22:46:06.803051: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4422040 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2021-01-15 22:46:06.803130: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2021-01-15 22:46:06.976492: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x44b7390 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2021-01-15 22:46:06.976639: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+2021-01-15 22:46:06.981444: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:83:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+2021-01-15 22:46:06.981582: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-15 22:46:06.981690: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2021-01-15 22:46:06.981797: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcufft.so.10
+2021-01-15 22:46:06.981895: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcurand.so.10
+2021-01-15 22:46:06.981989: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusolver.so.10
+2021-01-15 22:46:06.982082: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcusparse.so.10
+2021-01-15 22:46:06.982209: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2021-01-15 22:46:06.985696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2021-01-15 22:46:06.986709: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+2021-01-15 22:46:08.761335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-01-15 22:46:08.761464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2021-01-15 22:46:08.761517: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2021-01-15 22:46:08.764821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11121 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:83:00.0, compute capability: 6.0)
+2021-01-15 23:20:43.010719: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcublas.so.10
+2021-01-15 23:20:43.231738: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudnn.so.7
+2021-01-15 23:20:45.370130: W tensorflow/stream_executor/gpu/asm_compiler.cc:81] Running ptxas --version returned 256
+2021-01-15 23:20:45.764478: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 256, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+Epoch 1/100
+62500/62500 - 162s - loss: 0.1604 - accuracy: 0.9373
+Epoch 2/100
+62500/62500 - 159s - loss: 0.0993 - accuracy: 0.9630
+Epoch 3/100
+62500/62500 - 159s - loss: 0.0905 - accuracy: 0.9666
+Epoch 4/100
+62500/62500 - 159s - loss: 0.0857 - accuracy: 0.9685
+Epoch 5/100
+62500/62500 - 159s - loss: 0.0829 - accuracy: 0.9695
+Epoch 6/100
+62500/62500 - 159s - loss: 0.0803 - accuracy: 0.9705
+Epoch 7/100
+62500/62500 - 159s - loss: 0.0787 - accuracy: 0.9710
+Epoch 8/100
+62500/62500 - 159s - loss: 0.0774 - accuracy: 0.9717
+Epoch 9/100
+62500/62500 - 159s - loss: 0.0766 - accuracy: 0.9720
+Epoch 10/100
+62500/62500 - 159s - loss: 0.0752 - accuracy: 0.9725
+Epoch 11/100
+62500/62500 - 160s - loss: 0.0748 - accuracy: 0.9725
+Epoch 12/100
+62500/62500 - 159s - loss: 0.0740 - accuracy: 0.9730
+Epoch 13/100
+62500/62500 - 159s - loss: 0.0730 - accuracy: 0.9732
+Epoch 14/100
+62500/62500 - 159s - loss: 0.0727 - accuracy: 0.9733
+Epoch 15/100
+62500/62500 - 159s - loss: 0.0719 - accuracy: 0.9736
+Epoch 16/100
+62500/62500 - 159s - loss: 0.0716 - accuracy: 0.9739
+Epoch 17/100
+62500/62500 - 159s - loss: 0.0706 - accuracy: 0.9742
+Epoch 18/100
+62500/62500 - 159s - loss: 0.0703 - accuracy: 0.9742
+Epoch 19/100
+62500/62500 - 159s - loss: 0.0698 - accuracy: 0.9743
+Epoch 20/100
+62500/62500 - 159s - loss: 0.0697 - accuracy: 0.9744
+Epoch 21/100
+62500/62500 - 159s - loss: 0.0693 - accuracy: 0.9745
+Epoch 22/100
+62500/62500 - 159s - loss: 0.0688 - accuracy: 0.9748
+Epoch 23/100
+62500/62500 - 159s - loss: 0.0682 - accuracy: 0.9749
+Epoch 24/100
+62500/62500 - 159s - loss: 0.0681 - accuracy: 0.9750
+Epoch 25/100
+62500/62500 - 159s - loss: 0.0682 - accuracy: 0.9749
+Epoch 26/100
+62500/62500 - 159s - loss: 0.0681 - accuracy: 0.9751
+Epoch 27/100
+62500/62500 - 159s - loss: 0.0677 - accuracy: 0.9753
+Epoch 28/100
+62500/62500 - 159s - loss: 0.0678 - accuracy: 0.9752
+Epoch 29/100
+62500/62500 - 159s - loss: 0.0671 - accuracy: 0.9754
+Epoch 30/100
+62500/62500 - 159s - loss: 0.0670 - accuracy: 0.9754
+Epoch 31/100
+62500/62500 - 159s - loss: 0.0671 - accuracy: 0.9755
+Epoch 32/100
+62500/62500 - 159s - loss: 0.0670 - accuracy: 0.9755
+Epoch 33/100
+62500/62500 - 159s - loss: 0.0667 - accuracy: 0.9756
+Epoch 34/100
+62500/62500 - 159s - loss: 0.0669 - accuracy: 0.9755
+Epoch 35/100
+62500/62500 - 159s - loss: 0.0663 - accuracy: 0.9758
+Epoch 36/100
+62500/62500 - 159s - loss: 0.0660 - accuracy: 0.9758
+Epoch 37/100
+62500/62500 - 158s - loss: 0.0657 - accuracy: 0.9758
+Epoch 38/100
+62500/62500 - 158s - loss: 0.0659 - accuracy: 0.9758
+Epoch 39/100
+62500/62500 - 158s - loss: 0.0661 - accuracy: 0.9758
+Epoch 40/100
+62500/62500 - 158s - loss: 0.0659 - accuracy: 0.9759
+Epoch 41/100
+62500/62500 - 158s - loss: 0.0659 - accuracy: 0.9758
+Epoch 42/100
+62500/62500 - 158s - loss: 0.0657 - accuracy: 0.9760
+Epoch 43/100
+62500/62500 - 158s - loss: 0.0654 - accuracy: 0.9761
+Epoch 44/100
+62500/62500 - 158s - loss: 0.0651 - accuracy: 0.9763
+Epoch 45/100
+62500/62500 - 158s - loss: 0.0647 - accuracy: 0.9764
+Epoch 46/100
+62500/62500 - 158s - loss: 0.0648 - accuracy: 0.9764
+Epoch 47/100
+62500/62500 - 158s - loss: 0.0648 - accuracy: 0.9763
+Epoch 48/100
+62500/62500 - 158s - loss: 0.0644 - accuracy: 0.9764
+Epoch 49/100
+62500/62500 - 158s - loss: 0.0642 - accuracy: 0.9765
+Epoch 50/100
+62500/62500 - 158s - loss: 0.0640 - accuracy: 0.9766
+Epoch 51/100
+62500/62500 - 158s - loss: 0.0642 - accuracy: 0.9766
+Epoch 52/100
+62500/62500 - 158s - loss: 0.0643 - accuracy: 0.9766
+Epoch 53/100
+62500/62500 - 158s - loss: 0.0642 - accuracy: 0.9765
+Epoch 54/100
+62500/62500 - 158s - loss: 0.0640 - accuracy: 0.9767
+Epoch 55/100
+62500/62500 - 158s - loss: 0.0640 - accuracy: 0.9766
+Epoch 56/100
+62500/62500 - 158s - loss: 0.0642 - accuracy: 0.9766
+Epoch 57/100
+62500/62500 - 158s - loss: 0.0636 - accuracy: 0.9767
+Epoch 58/100
+62500/62500 - 158s - loss: 0.0639 - accuracy: 0.9767
+Epoch 59/100
+62500/62500 - 158s - loss: 0.0639 - accuracy: 0.9767
+Epoch 60/100
+62500/62500 - 158s - loss: 0.0639 - accuracy: 0.9765
+Epoch 61/100
+62500/62500 - 158s - loss: 0.0639 - accuracy: 0.9767
+Epoch 62/100
+62500/62500 - 158s - loss: 0.0636 - accuracy: 0.9767
+Epoch 63/100
+62500/62500 - 158s - loss: 0.0640 - accuracy: 0.9767
+Epoch 64/100
+62500/62500 - 158s - loss: 0.0636 - accuracy: 0.9768
+Epoch 65/100
+62500/62500 - 158s - loss: 0.0637 - accuracy: 0.9768
+Epoch 66/100
+62500/62500 - 158s - loss: 0.0634 - accuracy: 0.9769
+Epoch 67/100
+62500/62500 - 158s - loss: 0.0636 - accuracy: 0.9768
+Epoch 68/100
+62500/62500 - 158s - loss: 0.0634 - accuracy: 0.9769
+Epoch 69/100
+62500/62500 - 158s - loss: 0.0631 - accuracy: 0.9770
+Epoch 70/100
+62500/62500 - 158s - loss: 0.0631 - accuracy: 0.9770
+Epoch 71/100
+62500/62500 - 158s - loss: 0.0628 - accuracy: 0.9771
+Epoch 72/100
+62500/62500 - 158s - loss: 0.0626 - accuracy: 0.9772
+Epoch 73/100
+62500/62500 - 158s - loss: 0.0628 - accuracy: 0.9771
+Epoch 74/100
+62500/62500 - 158s - loss: 0.0624 - accuracy: 0.9772
+Epoch 75/100
+62500/62500 - 158s - loss: 0.0624 - accuracy: 0.9772
+Epoch 76/100
+62500/62500 - 158s - loss: 0.0624 - accuracy: 0.9772
+Epoch 77/100
+62500/62500 - 158s - loss: 0.0627 - accuracy: 0.9771
+Epoch 78/100
+62500/62500 - 157s - loss: 0.0624 - accuracy: 0.9773
+Epoch 79/100
+62500/62500 - 158s - loss: 0.0625 - accuracy: 0.9772
+Epoch 80/100
+62500/62500 - 158s - loss: 0.0620 - accuracy: 0.9774
+Epoch 81/100
+62500/62500 - 158s - loss: 0.0622 - accuracy: 0.9774
+Epoch 82/100
+62500/62500 - 158s - loss: 0.0622 - accuracy: 0.9773
+Epoch 83/100
+62500/62500 - 158s - loss: 0.0623 - accuracy: 0.9773
+Epoch 84/100
+62500/62500 - 158s - loss: 0.0623 - accuracy: 0.9772
+Epoch 85/100
+62500/62500 - 158s - loss: 0.0623 - accuracy: 0.9774
+Epoch 86/100
+62500/62500 - 158s - loss: 0.0624 - accuracy: 0.9773
+Epoch 87/100
+62500/62500 - 158s - loss: 0.0622 - accuracy: 0.9772
+Epoch 88/100
+62500/62500 - 158s - loss: 0.0624 - accuracy: 0.9773
+Epoch 89/100
+62500/62500 - 158s - loss: 0.0620 - accuracy: 0.9774
+Epoch 90/100
+62500/62500 - 158s - loss: 0.0621 - accuracy: 0.9773
+Epoch 91/100
+62500/62500 - 158s - loss: 0.0623 - accuracy: 0.9773
+Epoch 92/100
+62500/62500 - 158s - loss: 0.0619 - accuracy: 0.9775
+Epoch 93/100
+62500/62500 - 158s - loss: 0.0616 - accuracy: 0.9775
+Epoch 94/100
+62500/62500 - 158s - loss: 0.0620 - accuracy: 0.9773
+Epoch 95/100
+62500/62500 - 158s - loss: 0.0620 - accuracy: 0.9774
+Epoch 96/100
+62500/62500 - 158s - loss: 0.0618 - accuracy: 0.9775
+Epoch 97/100
+62500/62500 - 158s - loss: 0.0622 - accuracy: 0.9773
+Epoch 98/100
+62500/62500 - 158s - loss: 0.0616 - accuracy: 0.9775
+Epoch 99/100
+62500/62500 - 158s - loss: 0.0617 - accuracy: 0.9775
+Epoch 100/100
+62500/62500 - 158s - loss: 0.0617 - accuracy: 0.9774
+End time: Sat Jan 16 03:45:07 EST 2021
+========== FINISH ==========

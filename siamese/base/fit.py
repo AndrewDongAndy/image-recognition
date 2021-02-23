@@ -12,20 +12,22 @@ import tensorflow as tf
 INPUT_SHAPE = (28, 28, 1)
 
 # model parameters
-FEATURES = 128
+FEATURES = 256
 DROPOUT_RATE = 0.3
 
 # training parameters
 POSITIVE = 1000000
 NEGATIVE = 1000000
 BATCH_SIZE = 32
-EPOCHS = 100
+EPOCHS = 20
+VERBOSITY_MODE = 2
 
 # testing parameters
 # POSITIVE = 1000
 # NEGATIVE = 1000
 # BATCH_SIZE = 32
 # EPOCHS = 5
+# VERBOSITY_MODE = 1
 
 
 def generate_pairs(x, y, positive, negative):
@@ -38,6 +40,15 @@ def generate_pairs(x, y, positive, negative):
     ids = [[] for i in range(classes)]
     for c, label in enumerate(y):
         ids[d[label]].append(c)
+
+    # new_y = [1 for _ in range(positive)].extend([0 for _ in range(negative)])
+    # x1_labels = np.random.randint(0, classes, positive + negative)
+    # # x2_labels = [classes - 1 if random.randint(0, classes - 2) == i for i in x1_labels[:positive]]
+    # # x2_labels = [classes - 1 if random.randint(0, classes - 2) == i for i in x1_labels[:positive]]
+    # x1 = [x[i] for i in x1_labels]
+    # x2 = [x[i] for i in x2_labels]
+    # return (np.array(x1), np.array(x2)), np.array(new_y)
+
     for _ in range(positive):
         label = random.randint(0, classes - 1)
         a = np.random.choice(ids[label])
@@ -58,41 +69,72 @@ def generate_pairs(x, y, positive, negative):
     return (np.array(x1), np.array(x2)), np.array(new_y)
 
 
-def dist(vectors):
+def dist_L2(vectors):
     a, b = vectors
-    s = tf.keras.backend.sum(tf.math.square(a - b), axis=1, keepdims=True)
-    return tf.math.sqrt(s)
-    # return tf.math.sqrt(tf.keras.backend.maximum(s, tf.keras.backend.epsilon()))
+    res = tf.math.sqrt(tf.keras.backend.sum(tf.math.square(a - b), axis=1, keepdims=True))
+    return tf.maximum(res, tf.keras.backend.epsilon())
 
 
-inputs = tf.keras.Input(shape=INPUT_SHAPE)
+def dist_L1(vectors):
+    a, b = vectors
+    res = tf.keras.backend.sum(tf.math.abs(a - b), axis=1, keepdims=True)
+    return tf.maximum(res, tf.keras.backend.epsilon())
 
-# convolution 1
-conv1 = tf.keras.layers.Conv2D(64, 5, activation='relu')(inputs)
-pool1 = tf.keras.layers.MaxPool2D(pool_size=2, strides=2)(conv1)
-drop1 = tf.keras.layers.Dropout(DROPOUT_RATE)(pool1)
 
-# convolution 2
-conv2 = tf.keras.layers.Conv2D(64, 3, activation='relu')(drop1)
-pool2 = tf.keras.layers.MaxPool2D(pool_size=2, strides=2)(conv2)
-drop2 = tf.keras.layers.Dropout(DROPOUT_RATE)(pool2)
+feature_model = tf.keras.Sequential([
+    tf.keras.Input(shape=INPUT_SHAPE),  # (28, 28, 1)
 
-# final pooling
-global1 = tf.keras.layers.GlobalAveragePooling2D()(drop2)
-outputs = tf.keras.layers.Dense(FEATURES)(global1)
+    # convolution 1
+    tf.keras.layers.Conv2D(32, 5,
+        activation='relu',
+        kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.01),
+        bias_initializer=tf.keras.initializers.RandomNormal(mean=0.5, stddev=0.01),
+    ),  # (24, 24, 32)
+    tf.keras.layers.MaxPool2D(pool_size=(2, 2), strides=2),  # (12, 12, 32)
+    tf.keras.layers.Dropout(DROPOUT_RATE),
 
-feature_model = tf.keras.Model(inputs=inputs, outputs=outputs)
-# feature_model.summary()
+    # convolution 2
+    tf.keras.layers.Conv2D(64, 3,
+        activation='relu',
+        kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.01),
+        bias_initializer=tf.keras.initializers.RandomNormal(mean=0.5, stddev=0.01),
+    ),  # (10, 10, 64)
+    tf.keras.layers.MaxPool2D(pool_size=(2, 2), strides=2),  # (5, 5, 64)
+    tf.keras.layers.Dropout(DROPOUT_RATE),
+
+    # final pooling
+    # tf.keras.layers.GlobalAveragePooling2D(),
+    # tf.keras.layers.Dense(FEATURES, activation='sigmoid'),
+
+    # convolution 3
+    tf.keras.layers.Conv2D(128, 3,
+        activation='relu',
+        kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.01),
+        bias_initializer=tf.keras.initializers.RandomNormal(mean=0.5, stddev=0.01),
+    ),  # (3, 3, 128)
+    # tf.keras.layers.GlobalAveragePooling2D(),
+
+    # feature extraction
+    tf.keras.layers.Flatten(),  # (1152,)
+    tf.keras.layers.Dense(FEATURES,
+        activation='sigmoid',
+        kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.2),
+        bias_initializer=tf.keras.initializers.RandomNormal(mean=0.5, stddev=0.01),
+    ),  # (FEATURES,)
+])
+
+feature_model.summary()
+# exit()
 
 a = tf.keras.Input(INPUT_SHAPE)
 b = tf.keras.Input(INPUT_SHAPE)
 features_a = feature_model(a)
 features_b = feature_model(b)
-edist = tf.keras.layers.Lambda(dist)([features_a, features_b])
-outputs2 = tf.keras.layers.Dense(1, activation='sigmoid')(edist)
+dist_layer = tf.keras.layers.Lambda(dist_L1)([features_a, features_b])
+outputs = tf.keras.layers.Dense(1, activation='sigmoid')(dist_layer)
 
 # make the model from the inputs and outputs
-model = tf.keras.Model(inputs=[a, b], outputs=outputs2)
+model = tf.keras.Model(inputs=[a, b], outputs=outputs)
 
 # compile
 model.compile(
@@ -118,7 +160,7 @@ model.fit(
     [x1_train, x2_train], new_y_train,
     batch_size=BATCH_SIZE,
     epochs=EPOCHS,
-    verbose=2,  # avoid super long output files
+    verbose=VERBOSITY_MODE,
 )
 
 # save the network
